@@ -1,2 +1,0 @@
-d /var/lib/chromium-kiosk 0770 chromium-kiosk chromium-kiosk - -
-Z /var/lib/chromium-kiosk 0770 chromium-kiosk chromium-kiosk - -

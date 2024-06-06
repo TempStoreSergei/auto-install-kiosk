@@ -1,23 +1,4 @@
 #!/usr/bin/env python3
-"""Main entry-point into the 'Chromium Kiosk' application.
-
-This is Chromium Kiosk.
-
-License: GPL-3.0
-Website: https://github.com/Salamek/chromium-kiosk
-
-Command details:
-    run                 Run the application.
-Usage:
-    chromium-kiosk run [-l DIR] [--config_prod]
-    chromium-kiosk watch_config [--config_prod]
-    chromium-kiosk system_info [--config_prod]
-    chromium-kiosk (-h | --help)
-
-Options:
-    --config_prod               Load the production configuration instead of dev
-    -l DIR --log_dir=DIR        Directory to log into
-"""
 
 import logging
 import logging.handlers

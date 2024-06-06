@@ -1,51 +1,53 @@
+# Maintainer: Your Name <your.email@example.com>
 pkgname=chromium-kiosk
 pkgver=2.4.2
-pkgdesc="Chromium kiosk."
 pkgrel=1
+pkgdesc="Chromium kiosk."
 arch=('any')
-backup=('etc/chromium-kiosk/config.yml')
-license=('GPL-3.0')
 url='https://github.com/Salamek/chromium-kiosk'
-#md5sums=('SKIP')
+license=('GPL-3.0')
+backup=('etc/chromium-kiosk/config.yml')
 install=chromium_kiosk.install
-makedepends=('python-setuptools')
 replaces=('granad-kiosk')
+
+# Dependencies for building and running the package
+makedepends=('python-pip')
 depends=(
-    'python'
-    'python-setuptools'
-    'qiosk'
-    'xorg-server'
-    'xorg-xset'
-    'xorg-xinit'
-    'xorg-xrandr'
-    'xorg-xinput'
-    'xf86-video-fbdev'
-    'xfwm4'
     'alsa-utils'
-    'unclutter'
-    'python-yaml'
+    'nginx'
+    'openssh'
+    'openbox'
+    'pcmanfm'
+    'python'
     'python-docopt'
+    'python-pip'
+    'python-venv'
     'python-websockets'
+    'python-yaml'
+    'qiosk'
+    'unclutter'
+    'xf86-video-fbdev'
+    'xorg-server'
+    'xorg-xinit'
+    'xorg-xinput'
+    'xorg-xrandr'
+    'xorg-xset'
 )
 
-optdepends=(
-    'xf86-video-fbturbo: Install on Raspberry PI 3 for faster rendering'
-)
-
+# Prepare the build environment
 prepare() {
-  mkdir -p "${srcdir}/${pkgname}"
-  cp -R "${srcdir}/../../etc" "${srcdir}/${pkgname}"
-  cp -R "${srcdir}/../../usr" "${srcdir}/${pkgname}"
-  cp -R "${srcdir}/../../var" "${srcdir}/${pkgname}"
-  cp -R "${srcdir}/../../chromium_kiosk" "${srcdir}/${pkgname}"
-  cp -R "${srcdir}/../../tests" "${srcdir}/${pkgname}"
-  cp -R "${srcdir}/../../setup.py" "${srcdir}/${pkgname}"
-  cp -R "${srcdir}/../../requirements.txt" "${srcdir}/${pkgname}"
-  cp -R "${srcdir}/../../README.md" "${srcdir}/${pkgname}"
+    cd "$srcdir"
+    mkdir -p "${pkgname}"
+    cp -R "${srcdir}/../../etc" "${pkgname}"
+    cp -R "${srcdir}/../../usr" "${pkgname}"
+    cp -R "${srcdir}/../../var" "${pkgname}"
+    cp -R "${srcdir}/../../chromium_kiosk" "${pkgname}"
+    cp -R "${srcdir}/../../setup.py" "${pkgname}"
+    cp -R "${srcdir}/../../requirements.txt" "${pkgname}"
 }
 
-
+# Install the package
 package() {
-  cd "${srcdir}/${pkgname}"
-  python setup.py install --root="$pkgdir/" --optimize=1
+    cd "${srcdir}/${pkgname}"
+    python setup.py install --root="$pkgdir/" --optimize=1
 }

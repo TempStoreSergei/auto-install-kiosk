@@ -1,2 +1,0 @@
-u chromium-kiosk - "Chromium based web kiosk" /var/lib/chromium-kiosk /bin/bash
-m chromium-kiosk video

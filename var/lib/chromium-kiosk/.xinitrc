@@ -1,19 +1,30 @@
 #!/bin/sh
-xset -dpms      # disable DPMS (Energy Star) features.
-xset s off      # disable screen saver
-xset s noblank  # don't blank the video device
 
-# Check if xscreensaver is installed, if it is run it
+# Disable DPMS (Energy Star) features
+xset -dpms
 
-if command -v xscreensaver &> /dev/null
-then
-    xscreensaver -no-splash & # xscreensaver daemon
-fi
+# Disable screen saver
+xset s off
 
-unclutter &     # hides your cursor after inactivity
-xfwm4 &
-if [ -e ~/chromium-kiosk-prehook.sh ] # Check if prehook exists and run it
-then
+# Prevent screen blanking
+xset s noblank
+
+# Hide cursor after inactivity
+unclutter -idle 0.01 -root
+
+# Start Openbox window manager
+openbox &
+
+# Start PCManFM file manager
+pcmanfm --desktop &
+
+# Check if a prehook script exists and run it
+if [ -e ~/chromium-kiosk-prehook.sh ]; then
     ~/chromium-kiosk-prehook.sh
 fi
-exec chromium-kiosk run --config_prod --log_dir=$HOME && killall -u $USER
+
+# Launch Chromium in kiosk mode with production configuration and log directory
+exec chromium-kiosk run --config_prod --log_dir=$HOME
+
+# Ensure termination of background processes
+killall -u $USER

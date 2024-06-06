@@ -53,7 +53,6 @@ setup(
     name='chromium-kiosk',
     version='2.4.2',
     description='Chromium Kiosk',
-    long_description=open('README.md').read(),
     author='Adam Schubert',
     author_email='adam.schubert@sg1-game.net',
     url='https://github.com/Salamek/chromium-kiosk',

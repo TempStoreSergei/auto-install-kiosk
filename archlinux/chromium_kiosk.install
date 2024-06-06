@@ -1,34 +1,67 @@
-## arg 1:  the new package version
+## arg 1: the new package version
 pre_install() {
-        :
+    # Add error handling and logging
+    echo "Pre-installation tasks starting..."
+    # Add your pre-installation tasks here
+    echo "Pre-installation tasks completed."
 }
 
-## arg 1:  the new package version
+## arg 1: the new package version
 post_install() {
-        # Generate default config
-        systemctl start chromium-kiosk_configwatcher
-        systemctl enable chromium-kiosk_configwatcher
+    # Add error handling and logging
+    echo "Post-installation tasks starting..."
+    # Generate default config
+    systemctl start chromium-kiosk_configwatcher
+    systemctl enable chromium-kiosk_configwatcher
 
+    # Start and enable nginx
+    systemctl start nginx
+    systemctl enable nginx
+
+    # Start and enable sshd (openssh)
+    systemctl start sshd
+    systemctl enable sshd
+
+    echo "Post-installation tasks completed."
 }
 
-## arg 1:  the new package version
-## arg 2:  the old package version
+## arg 1: the new package version
+## arg 2: the old package version
 pre_upgrade() {
-        :
+    # Add error handling and logging
+    echo "Pre-upgrade tasks starting..."
+    # Add your pre-upgrade tasks here
+    echo "Pre-upgrade tasks completed."
 }
 
-## arg 1:  the new package version
-## arg 2:  the old package version
+## arg 1: the new package version
+## arg 2: the old package version
 post_upgrade() {
-        systemctl restart chromium-kiosk_configwatcher
+    # Add error handling and logging
+    echo "Post-upgrade tasks starting..."
+    systemctl restart chromium-kiosk_configwatcher
+
+    # Restart nginx
+    systemctl restart nginx
+
+    # Restart sshd (openssh)
+    systemctl restart sshd
+
+    echo "Post-upgrade tasks completed."
 }
 
-## arg 1:  the old package version
+## arg 1: the old package version
 pre_remove() {
-        :
+    # Add error handling and logging
+    echo "Pre-removal tasks starting..."
+    # Add your pre-removal tasks here
+    echo "Pre-removal tasks completed."
 }
 
-## arg 1:  the old package version
+## arg 1: the old package version
 post_remove() {
-        :
+    # Add error handling and logging
+    echo "Post-removal tasks starting..."
+    # Add your post-removal tasks here
+    echo "Post-removal tasks completed."
 }

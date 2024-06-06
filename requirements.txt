@@ -1,3 +1,6 @@
 pyyaml
 docopt
 websockets
+fastapi
+sqlmodel
+uvicorn
