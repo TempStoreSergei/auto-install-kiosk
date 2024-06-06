@@ -26,17 +26,10 @@ def package_files(directory: str) -> List[str]:
 classes = """
     Development Status :: 4 - Beta
     Intended Audience :: Developers
-    Programming Language :: Python
-    Programming Language :: Python :: 2
-    Programming Language :: Python :: 2.7
-    Programming Language :: Python :: 3
-    Programming Language :: Python :: 3.3
-    Programming Language :: Python :: 3.4
-    Programming Language :: Python :: 3.5
     Programming Language :: Python :: 3.6
     Programming Language :: Python :: Implementation :: CPython
     Programming Language :: Python :: Implementation :: PyPy
-    Operating System :: OS Independent
+    Operating System :: OS Arch Linux
 """
 classifiers = [s.strip() for s in classes.split('\n') if s]
 
@@ -58,7 +51,6 @@ setup(
     url='https://github.com/Salamek/chromium-kiosk',
     license='GPL-3.0',
     classifiers=classifiers,
-    packages=find_packages(exclude=['tests', 'tests.*']),
     install_requires=install_requires,
     test_suite="tests",
     tests_require=install_requires,
